@@ -1,11 +1,11 @@
 class Person
 
   def intialize
-    @bike_id
+
   end
 
-  def take_bike
-
+  def take_bike station
+    @bike = station.bikes.pop
   end
 
   def return

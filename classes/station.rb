@@ -1,5 +1,7 @@
 class Station
 
+  attr_accessor :bikes
+  
   def initialize
     @capacity = 20
     @bikes = []
