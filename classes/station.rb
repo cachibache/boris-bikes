@@ -29,5 +29,4 @@ class Station
 
     # @bikes.reject { |b| b.broken? == true }.first 
   end
-  end
 end
