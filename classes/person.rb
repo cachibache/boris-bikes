@@ -1,5 +1,7 @@
 class Person
 
+  attr_reader :bike
+
   def intialize
 
   end
@@ -8,7 +10,7 @@ class Person
     @bike = station.bikes.pop
   end
 
-  def return
-
+  def return_bike
+    @bike
   end
 end
