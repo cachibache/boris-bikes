@@ -19,14 +19,16 @@ class Control
 
   def run
     @people.each{ |p| p.take_bike @station  if rand < 0.15 }
-    report
-
-    @people.each { |p| @station << p.return_bike if p.bike != nil && rand < 0.5 }
-
+    @people.each { |p| @station << p.return_bike if p.bike != nil && rand < 0.3 }
     report
   end
 
   def report
-    puts "Number of bikes in station: " + @station.num_of_bikes.to_s
+    puts "Number of bikes in station: #{@station.num_of_bikes.to_s}"
+    puts "Number of broken bikes: #{@station.num_broken_bikes}"
   end
-end
+
+  def self.broken_bike
+
+  end
+end   
