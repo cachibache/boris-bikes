@@ -17,14 +17,12 @@ class Control
     run
   end
 
-
-
   def run
-    @people.each{ |person| person.take_bike @station  if rand < 0.15 }
+    @people.each{ |p| p.take_bike @station  if rand < 0.15 }
     report
-    @people.each do |person|
-      @station << person.return_bike if person.bike != nil 
-    end
+
+    @people.each { |p| @station << p.return_bike if p.bike != nil && rand < 0.5 }
+
     report
   end
 
