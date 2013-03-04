@@ -1,12 +1,15 @@
 class Control
 
   def initialize
-    @bikes, @stations, @vans, @garages, @people = [],[],[],[],[]
-    20.times { |i|  @bikes << Bike.new(i) }
-    1.times  { |i|  @stations << Station.new(i) }
-    1.times  { |i|  @vans << Van.new(i) }
-    1.times  { |i|  @garages << Garage.new(i) }
-    30.times { |i|  @people << Person.new(i) }
+
+    @people = 30.times { @people << Person.new }
+
+    @station = Station.new
+    20.times { @station << Bike.new }
+
+    @van = Van.new
+    @garage = Garage.new
+
     run
   end
 

@@ -1,7 +1,6 @@
 class Bike
 
-  def initialize id
-    @id = id
+  def initialize
     @status = 'not broken'
   end
 end
