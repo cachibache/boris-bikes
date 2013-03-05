@@ -2,7 +2,7 @@ class Station < Locations
 
   def initialize
     @capacity = 20
-    @bikes = []
+    super
   end
 
   def << bike
@@ -20,18 +20,14 @@ class Station < Locations
 
   def accept_bikes bikes
     bikes.each { |bike| @bikes << bike }
-    Control.notify "Van delivered fixed bikes to station"
+    notify_control "Van delivered fixed bikes to station"
   end
 
   def bikes_to_van
     bikes = @bikes.select(&:broken?)
-    Control.notify "Van collected broken bikes from station"
+    notify_control "Van collected broken bikes from station"
     @bikes.delete_if(&:broken?)
     return bikes
-  end
-
-  def capacity
-    @capacity
   end
 
   def bikes_in_use
