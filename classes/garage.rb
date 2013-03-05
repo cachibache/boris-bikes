@@ -1,7 +1,5 @@
 class Garage
 
-  attr_accessor :bikes
-
   def initialize
     @bikes = []
   end
@@ -15,11 +13,13 @@ class Garage
     fix_bikes
   end
 
-  def return_bikes
-    @bikes
-  end
-
   def bike_count
     @bikes.count
+  end
+
+  def bikes_to_van
+    bikes = @bikes
+    @bikes = []
+    bikes
   end
 end

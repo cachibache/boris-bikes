@@ -5,13 +5,7 @@ class Van
   end
 
   def collect_bikes location
-    @bikes = location.bikes.select(&:broken?)
-    location.bikes.delete_if(&:broken?)
-  end
-
-  def deliver_bikes garage
-    garage.accept_bikes @bikes
-    @bikes = []
+    @bikes = location.bikes_to_van
   end
 
   def deliver_bikes location
@@ -19,7 +13,7 @@ class Van
     @bikes = []
   end
 
-  def bikes_collected 
+  def bikes_count
      @bikes.count
   end
 end

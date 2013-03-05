@@ -1,6 +1,5 @@
 class Station
 
-  attr_accessor :bikes
   attr_reader   :capacity
 
   def initialize
@@ -27,5 +26,11 @@ class Station
 
   def accept_bikes bikes
     bikes.each { |bike| @bikes << bike }
+  end
+
+  def bikes_to_van
+    bikes = @bikes.select(&:broken?)
+    @bikes.delete_if(&:broken?)
+    return bikes
   end
 end
