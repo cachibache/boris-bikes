@@ -1,7 +1,5 @@
 class Person
 
-  attr_reader :bike
-
   def intialize
   end
 
@@ -16,5 +14,9 @@ class Person
 
   def is_bike_broken?
     @bike.set_status true if rand < 0.1
+  end
+
+  def has_bike?
+    @bike
   end
 end

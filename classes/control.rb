@@ -20,7 +20,7 @@ class Control
 
     @people.each { |p| p.take_bike @station  if rand < 0.25 }
 
-    @people.each { |p| @station << p.return_bike if p.bike != nil && rand < 0.3 }
+    @people.each { |p| @station << p.return_bike if p.has_bike? != nil && rand < 0.3 }
 
     @bikes_at_station = @station.num_of_bikes
 
