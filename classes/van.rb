@@ -1,4 +1,4 @@
-class Van
+class Van < Locations
 
   def initialize
     @bikes = []
@@ -11,9 +11,5 @@ class Van
   def deliver_bikes location
     location.accept_bikes @bikes
     @bikes = []
-  end
-
-  def bikes_count
-     @bikes.count
   end
 end
