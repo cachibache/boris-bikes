@@ -6,7 +6,7 @@ class Station < Locations
   end
 
   def << bike
-    @bikes << bike if bike_count < @capacity
+    @bikes << bike if bike_count < capacity
   end
 
   def num_broken_bikes
