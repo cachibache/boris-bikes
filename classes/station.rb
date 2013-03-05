@@ -24,4 +24,8 @@ class Station
     bike = @bikes.reject(&:broken?).first
     @bikes.delete(bike)
   end
+
+  def accept_bikes bikes
+    bikes.each { |bike| @bikes << bike }
+  end
 end

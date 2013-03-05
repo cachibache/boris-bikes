@@ -1,19 +1,25 @@
 class Garage
 
+  attr_accessor :bikes
+
   def initialize
-    @capacity = 10
     @bikes = []
   end
 
   def fix_bikes
-
+    @bikes.each { |bike| bike.status = false }
   end
 
-  def accept_bikes
-
+  def accept_bikes bikes
+    @bikes = bikes
+    fix_bikes
   end
 
   def return_bikes
+    @bikes
+  end
 
+  def bike_count
+    @bikes.count
   end
 end
