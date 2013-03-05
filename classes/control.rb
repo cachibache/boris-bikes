@@ -21,14 +21,17 @@ class Control
     @people.each { |p| p.take_bike @station  if rand < 0.25 }
     @people.each { |p| @station << p.return_bike if p.bike != nil && rand < 0.3 }
 
+    @broken_bikes_at_station = @station.num_broken_bikes
+
     @van.collect_bikes @station if @station.num_broken_bikes
 
     report
   end
 
   def report
-    puts "Number of bikes in station: #{@station.num_of_bikes.to_s}"
-    puts "Number of broken bikes: #{@station.num_broken_bikes}"
-    puts "Broken bikes collected: #{@van.bikes_collected.to_s}"
+    puts "Number of bikes in station: #{@station.num_of_bikes}"
+    puts "Number of broken bikes at station: #{@broken_bikes_at_station}"
+    puts "Broken bikes collected: #{@van.bikes_collected}"
+    puts "Bikes in use: #{@station.capacity - (@van.bikes_collected + @station.num_of_bikes)}"
   end
 end
