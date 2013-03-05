@@ -12,21 +12,19 @@ class Station
   end
 
   def << bike
-    Control.broken_bike if bike.broken? == true
+    Control.broken_bike if bike.broken?
     @bikes << bike if num_of_bikes < @capacity
   end
 
   def num_broken_bikes
-    broken_bikes = @bikes.select { |bike| bike if bike.broken? == true }
-    broken_bikes.count
+    # broken_bikes = @bikes.select { |bike| bike if bike.broken? }
+    # broken_bikes.count
+    # @bikes.count{|b| b.broken? }
+    @bikes.count(&:broken?)
   end
 
   def take_bike
-    bike = @bikes.last
-    if bike.broken? == false
-      @bike = @bikes.pop
-    end
-
-    # @bikes.reject { |b| b.broken? == true }.first 
+    bike = @bikes.reject { |b| b.broken? }.first
+    @bikes.delete(bike)
   end
 end
