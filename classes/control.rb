@@ -1,7 +1,5 @@
 class Control
 
-  attr_accessor :rented_bikes
-
   def initialize
 
     @people = []

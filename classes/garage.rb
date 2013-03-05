@@ -5,7 +5,7 @@ class Garage
   end
 
   def fix_bikes
-    @bikes.each { |bike| bike.status = false }
+    @bikes.each { |bike| bike.set_status false }
   end
 
   def accept_bikes bikes

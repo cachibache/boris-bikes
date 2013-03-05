@@ -15,6 +15,6 @@ class Person
   end
 
   def is_bike_broken?
-    @bike.status = true if rand < 0.1
+    @bike.set_status true if rand < 0.1
   end
 end
