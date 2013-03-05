@@ -1,7 +1,5 @@
 class Station
 
-  attr_reader   :capacity
-
   def initialize
     @capacity = 20
     @bikes = []
@@ -32,5 +30,9 @@ class Station
     bikes = @bikes.select(&:broken?)
     @bikes.delete_if(&:broken?)
     return bikes
+  end
+
+  def capacity
+    @capacity
   end
 end
