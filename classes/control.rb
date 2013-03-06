@@ -4,11 +4,15 @@ class Control
 
     @people = []
     @@messages = []
+    @stations = []
 
     30.times { @people << Person.new }
 
-    @station = Station.new
-    20.times { @station << Bike.new }
+    2.times do
+      @station = Station.new
+      20.times { @station << Bike.new }
+      @stations << @station
+    end
 
     @van = Van.new
     @garage = Garage.new
@@ -18,17 +22,22 @@ class Control
 
   def run
 
-    @people.each { |p| p.take_bike @station  if rand < 0.25 }
-    @people.each { |p| @station << p.return_bike if p.has_bike? != nil && rand < 0.3 }
+    @people.each { |p| p.take_bike @stations[rand(2)]  if rand < 0.25 }
+    @people.each { |p| @stations[rand(2)] << p.return_bike if p.has_bike? != nil && rand < 0.3 }
 
-    Control.notify "Bikes at station: #{@station.bike_count}"
-    Control.notify "Bikes in use: #{@station.bikes_in_use.to_s}"
-    Control.notify "Broken bikes at station: #{@station.num_broken_bikes}"
-    
-    @van.collect_bikes @station  if @station.num_broken_bikes > 0
-    @van.deliver_bikes @garage   if @van.bike_count > 0
-    @van.collect_bikes @garage   if @garage.bike_count > 0
-    @van.deliver_bikes @station  if @van.bike_count > 0
+    @stations.each do |station|
+      Control.notify "Station: #{station.object_id}"
+      Control.notify "Bikes at station: #{station.bike_count}"
+      Control.notify "Bikes in use: #{station.bikes_in_use.to_s}"
+      Control.notify "Broken bikes at station: #{station.num_broken_bikes}\n\n"
+
+      @van.collect_bikes station  if station.num_broken_bikes > 0
+      @van.deliver_bikes @garage  if @van.bike_count > 0
+      @van.collect_bikes @garage  if @garage.bike_count > 0
+      @van.deliver_bikes station  if @van.bike_count > 0
+
+      Control.notify "\n\n"
+    end
 
     report
   end
