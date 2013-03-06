@@ -6,7 +6,7 @@ class Control
     @@messages = []
     @stations = []
 
-    30.times { @people << Person.new }
+    100.times { @people << Person.new }
 
     2.times do
       @station = Station.new
@@ -23,7 +23,15 @@ class Control
   def run
 
     @people.each { |p| p.take_bike @stations[rand(2)]  if rand < 0.25 }
-    @people.each { |p| @stations[rand(2)] << p.return_bike if p.has_bike? != nil && rand < 0.3 }
+
+    @people.each do |p| 
+      if p.has_bike? != nil && rand < 0.3
+        @stations.each do |station|
+          station << p.return_bike
+          break if p.has_bike? == nil
+        end
+      end
+    end
 
     @stations.each do |station|
       Control.notify "Station: #{station.object_id}"
