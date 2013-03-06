@@ -1,3 +1,4 @@
+require './classes/locations.rb'
 require './classes/bike.rb'
 require './classes/person.rb'
 require './classes/station.rb'
