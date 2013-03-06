@@ -30,8 +30,6 @@ class Control
 
     @van.collect_bikes @station if @station.num_broken_bikes
 
-    @bikes_at_station_after_borken_collected = @station.num_of_bikes
-
     @broken_bikes_collected = @van.bikes_count
 
     @van.deliver_bikes @garage  if @van.bikes_count
@@ -49,10 +47,9 @@ class Control
 
   def report
     puts "Number of bikes in station: #{@bikes_at_station}"
+    puts "Bikes in use: #{@bikes_in_use}"
     puts "Number of broken bikes at station: #{@broken_bikes_at_station}"
     puts "Broken bikes collected by van: #{@broken_bikes_collected}"
-    puts "Number of bikes in station: #{@bikes_at_station_after_borken_collected}"
-    puts "Bikes in use: #{@bikes_in_use}"
     puts "Number of bikes in garage: #{@bikes_in_garage}"
     puts "Fixed bikes collected by van: #{@bikes_in_van}"
     puts "Number of bikes in station: #{@station.num_of_bikes}"
