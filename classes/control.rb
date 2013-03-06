@@ -26,7 +26,7 @@ class Control
 
     @people.each do |p| 
       if p.has_bike? != nil && rand < 0.3
-        @stations.each do |station|
+        @stations.shuffle!.each do |station|
           station << p.return_bike
           break if p.has_bike? == nil
         end
