@@ -25,21 +25,23 @@ class Control
     Control.notify "Bikes in use: #{@station.bikes_in_use.to_s}"
     Control.notify "Broken bikes at station: #{@station.num_broken_bikes}"
     
-    @van.collect_bikes @station if @station.num_broken_bikes > 0
-    @van.deliver_bikes @garage  if @van.bike_count > 0
-    @van.collect_bikes @garage if @garage.bike_count > 0
+    @van.collect_bikes @station  if @station.num_broken_bikes > 0
+    @van.deliver_bikes @garage   if @van.bike_count > 0
+    @van.collect_bikes @garage   if @garage.bike_count > 0
     @van.deliver_bikes @station  if @van.bike_count > 0
 
     report
   end
 
-  def report
-    puts '----------------'
-    @@messages.each { |message| puts message }
-    puts '----------------'
-  end
-
   def self.notify message
     @@messages << message
+  end
+
+  private
+
+  def report
+    puts "\n"
+    @@messages.each { |message| puts message }
+    puts "\n"
   end
 end
