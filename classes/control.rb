@@ -43,8 +43,6 @@ class Control
       @van.deliver_bikes @garage  if @van.bike_count > 0
       @van.collect_bikes @garage  if @garage.bike_count > 0
       @van.deliver_bikes station  if @van.bike_count > 0
-
-      Control.notify "\n\n"
     end
 
     report

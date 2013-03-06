@@ -20,7 +20,7 @@ class Station < Locations
 
   def accept_bikes bikes
     bikes.each { |bike| @bikes << bike }
-    notify_control "Van delivered fixed bikes to station"
+    notify_control "Van delivered fixed bikes to station\n\n"
   end
 
   def bikes_to_van
