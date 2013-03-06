@@ -44,7 +44,6 @@ class Control
       @van.collect_bikes @garage  if @garage.bike_count > 0
       @van.deliver_bikes station  if @van.bike_count > 0
     end
-
     report
   end
 
